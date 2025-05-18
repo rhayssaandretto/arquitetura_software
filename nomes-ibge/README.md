@@ -1,5 +1,0 @@
-## ATIVIDADE NOMES IBGE
-
-## INTEGRANTES
-Rhayssa Justino Andretto RA: 211631272
-Yves Morello RA: 220140552
