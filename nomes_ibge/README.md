@@ -3,6 +3,27 @@
 Este projeto é uma aplicação Flutter que consome a **API de Nomes do IBGE** para realizar **análises de tendências de nomes próprios no Brasil**, com base em dados históricos desde a década de 1930.  
 A aplicação segue os princípios da **Arquitetura Orientada a Serviços (SOA)**, com separação clara de responsabilidades entre os componentes.
 
+1. Serviços Autônomos e Bem Definidos
+
+- IbgeApiService encapsula toda a lógica de comunicação com a API do IBGE.
+- Possui métodos específicos (fetchNameEvolution, fetchTopNamesEvolution, compareNames) que funcionam como operações de serviço.
+- Baixo acoplamento: O serviço não depende da UI, apenas dos modelos de dados.
+
+2. Contratos de Serviço (Interfaces Implícitas)
+
+- Modelos (NameData, NameRecord) definem a estrutura dos dados trocados entre o serviço e os consumidores (telas).
+- Parsing via fromJson: Transforma respostas da API em objetos Dart, seguindo um contrato claro.
+
+3. Reusabilidade de Serviços
+
+- O IbgeApiService é reutilizado em múltiplas telas (ComparisonScreen, NameEvolutionScreen, etc.).
+- Evita duplicação de código, centralizando a lógica de API em um único lugar.
+
+4. Acoplamento Fraco - **Separação clara entre:**
+- Serviço (IbgeApiService): Lógica de negócios e API.
+- UI (Telas): Consome o serviço sem conhecer seus detalhes internos.
+- Modelos: Estruturas de dados compartilhadas.
+
 ---
 
 ## 🚀 Funcionalidades
@@ -38,9 +59,7 @@ A aplicação segue os princípios da **Arquitetura Orientada a Serviços (SOA)*
 ```plaintext
 lib/
 ├── models/
-│   ├── locality_ranking_model.dart
 │   ├── name_data_model.dart
-│   ├── name_ranking_data_model.dart
 │   └── name_record_model.dart
 ├── screens/
 │   ├── comparison_screen.dart
