@@ -17,7 +17,6 @@ class IbgeApiService {
   }
 
   Future<List<NameData>> fetchTopNamesEvolution(int locality) async {
-  // Passo 1: buscar top 3 nomes
   final rankingUrl = 'https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking?localidade=$locality';
   final rankingResponse = await http.get(Uri.parse(rankingUrl));
   if (rankingResponse.statusCode != 200) throw Exception("Erro no ranking");
@@ -25,7 +24,6 @@ class IbgeApiService {
   final rankingData = jsonDecode(rankingResponse.body)[0]["res"];
   final topNames = rankingData.take(3).map((e) => e["nome"]).toList();
 
-  // Passo 2: buscar histórico por nome
   List<NameData> result = [];
   for (final name in topNames) {
     final historyUrl = 'https://servicodados.ibge.gov.br/api/v2/censos/nomes/$name?localidade=$locality';

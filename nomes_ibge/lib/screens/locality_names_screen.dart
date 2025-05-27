@@ -80,7 +80,6 @@ class _LocalityNamesScreenState extends State<LocalityNamesScreen> {
 
     final top3Names = _rankings.take(3).toList();
 
-    // Agrupar por década
     final Map<String, List<Map<String, dynamic>>> decadeMap = {};
 
     for (var nameData in top3Names) {
@@ -94,7 +93,6 @@ class _LocalityNamesScreenState extends State<LocalityNamesScreen> {
       }
     }
 
-    // Criar as linhas com agrupamento visual
     final List<DataRow> rows = [];
 
     for (var entry in decadeMap.entries) {
@@ -127,7 +125,6 @@ class _LocalityNamesScreenState extends State<LocalityNamesScreen> {
     );
   }
 
-  // Formata a década tirando colchetes e separando com hífen
   String _formatarPeriodo(String periodo) {
     return periodo
         .replaceAll('[', '')
