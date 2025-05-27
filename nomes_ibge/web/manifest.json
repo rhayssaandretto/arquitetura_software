@@ -1,6 +1,6 @@
 {
-    "name": "nomes_ibge",
-    "short_name": "nomes_ibge",
+    "name": "ibge_nomes",
+    "short_name": "ibge_nomes",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

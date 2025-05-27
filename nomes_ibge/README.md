@@ -28,9 +28,8 @@ A aplicação segue os princípios da **Arquitetura Orientada a Serviços (SOA)*
 - [Flutter](https://flutter.dev/)
 - [Dart](https://dart.dev/)
 - [IBGE API de Nomes](https://servicodados.ibge.gov.br/api/docs/nomes?versao=2)
-- [`dio`](https://pub.dev/packages/dio) – para requisições REST
+- [`http`](https://pub.dev/packages/http) – para requisições REST
 - [`fl_chart`](https://pub.dev/packages/fl_chart) – para gráficos
-- [`provider`](https://pub.dev/packages/provider) – para gerenciamento de estado
 
 ---
 
@@ -38,21 +37,27 @@ A aplicação segue os princípios da **Arquitetura Orientada a Serviços (SOA)*
 
 ```plaintext
 lib/
-├── core/                  # Serviços utilitários (ex: cliente HTTP)
+├── models/
+│   ├── locality_ranking_model.dart
+│   ├── name_data_model.dart
+│   ├── name_ranking_data_model.dart
+│   └── name_record_model.dart
+├── screens/
+│   ├── comparison_screen.dart
+│   ├── home_screen.dart
+│   ├── locality_names_screen.dart
+│   └── name_evolution_screen.dart
+├── services/
 │   └── ibge_api_service.dart
-├── models/                # Modelos de dados
-│   └── nome_model.dart
-├── services/              # Camada de análise e processamento
-│   └── nome_analysis_service.dart
-├── ui/
-│   ├── pages/             # Telas principais
-│   │   ├── home_page.dart
-│   │   └── comparacao_page.dart
-│   └── widgets/           # Componentes reutilizáveis
-│       ├── ranking_chart.dart
-│       └── top_names_table.dart
-└── main.dart              # Ponto de entrada da aplicação
+└── widgets/
+    ├── line_chart_widget.dart
+    └── main.dart
 ```
+
+- models/: Contém os modelos de dados para ranking de localidades, dados de nomes e registros
+- screens/: Telas da aplicação incluindo comparação, home, localidades e evolução de nomes
+- services/: Serviço de API do IBGE para consumo de dados
+- widgets/: Componentes reutilizáveis como gráficos de linha e arquivo principal da aplicação
 
 ---
 
